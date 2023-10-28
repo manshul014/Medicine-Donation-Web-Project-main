@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Donate Medicine</title>
+    <link rel="icon" href="pics/icon.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            var activeUser=localStorage.getItem("activeUser");
+            $("#txtDonorEmail").val(activeUser).prop("readonly",true);
+        })
+
+        function loadimgFile(ref) {
+          var image = document.getElementById('Medprev');
+          image.src = URL.createObjectURL(ref.files[0]);
+        };
+    </script>
+
+    <style>
+        .body-bg
+        {
+            background-image: url(pics/all\ donors.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+        }
+
+        img
+        {
+            opacity: 0.5;
+        }
+
+        .op1
+        {
+            opacity: 0.9;
+        }
+
+        
+    </style>
+    
+</head>
+
+<body class="body-bg">
+    <nav class="navbar bg-primary fixed-top">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-brand mb-0 h1" style="font-size: 30px; color: white;">Post Medicine To Donate </span>
+        </div>
+    </nav>
+
+    <div class="container" style="margin: auto; margin-top: 125px; font-weight: bold;  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, Arial, Helvetica, sans-serif;" >
+        <form class="row g-4 mt-5 justify-content-center border border-2 "    method="post" enctype="multipart/form-data" >
+            <div class="col-md-10" style="margin-top: 50px;"> 
+                <div class="col-md-12">
+                    <label for="txtDonorEmail" class="form-label">Email Id</label>
+                    <div class="col-md-12 d-flex gap-3">
+                        <input type="text" class="form-control op1"  id="txtDonorEmail" name="txtDonorEmail" required>
+                     </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="txtDonorMedicine"  class="form-label">Medicine name</label>
+                <input type="text" class="form-control op1" id="txtDonorMedicine" name="txtDonorMedicine" value="" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+
+
+            
+            <div class="col-md-3 position-relative">
+                <label for="txtDonorPacking" class="form-label">Packing</label>
+                <select class="form-select op1" id="txtDonorPacking" name="txtDonorPacking" required>
+                    <option disabled selected value="">Choose...</option>
+                    <!-- <option selected>...</option> -->
+                    <option value="syrup">Syrup</option>
+                    <option value="tab">Tablet</option>
+                    <option value="cap">Capsule</option>
+                    <option value="powder">Powder</option>
+                </select>
+                <div class="invalid-tooltip">
+                    Please select a valid state.
+                </div>
+            </div>
+
+            
+
+            <div class="col-md-3">
+                <label for="txtDonorQuantity" class="form-label">Quantity</label>
+                <input type="text" class="form-control op1" id="txtDonorQuantity" name="txtDonorQuantity" value="" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+
+                <div class="col-md-3">
+                    <label for="txtDonorExpiryDate" class="form-label">Expiry Date</label>
+                    <input type="date" class="form-control op1" id="txtDonorExpiryDate" name="txtDonorExpiryDate"  required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
+    
+    
+                <div class="col-md-3">
+                    <label for="txtDonorCompanyName" class="form-label">Company Name</label>
+                    <input type="text" class="form-control op1" id="txtDonorCompanyName" name="txtDonorCompanyName"  required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="col-md-3 ">
+                    <label class="form-label" style="margin-left:200px ;" for="MedicineImg">Upload Image</label>
+                    <input type="file" class="form-control op1" id="MedicineImg" name="MedicineImg" onchange="loadimgFile(this);">
+                </div>
+    
+                
+    
+                <div class="col-md-1"> 
+                    <img src="pics/no image.jpg" class="img-thumbnail" alt="..." id="Medprev" width="100" height="100">
+                </div>
+            
+
+
+            <div class="col-md-10">
+                <label for="Description" class="form-label">Description</label>
+                <textarea class="form-control op1"   id="Description" name="Description"></textarea>
+                
+            </div>
+
+
+
+            <div class="col-md-10 d-flex gap-5 justify-content-center" style="margin-bottom: 50px;">
+                <button class="btn btn-primary" type="submit"  formaction="/availmedicine">Save</button>
+            </div>
+
+            
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
